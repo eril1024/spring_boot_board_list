@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.page.PageVO;
 import edu.bit.ex.service.BoardService;
+import edu.bit.ex.vo.BoardVO;
 import lombok.AllArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,13 @@ public class BController {
 
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		return "thymeleaf/list";
+	}
+
+	@GetMapping("/content_view")
+	public String content_view(Model model, BoardVO boardVO) {
+		log.info("content_view()");
+		model.addAttribute("content_view", service.getContent(boardVO));
+		return "thymeleaf/content_view";
 	}
 
 }

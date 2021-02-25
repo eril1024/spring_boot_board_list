@@ -16,4 +16,6 @@ public interface BoardMapper {
 
 	public int getTotal();
 
+	public BoardVO contentView(BoardVO boardVO);
+
 }
