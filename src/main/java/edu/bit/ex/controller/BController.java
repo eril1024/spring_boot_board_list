@@ -71,4 +71,16 @@ public class BController {
 
 	}
 
+	@GetMapping("/write_view")
+	public String write_view() {
+		return "thymeleaf/write_view";
+	}
+
+	@PostMapping("/write")
+	public String write(BoardVO boardVO) {
+		log.info("c.write()");
+		service.write(boardVO);
+		return "redirect:board";
+	}
+
 }

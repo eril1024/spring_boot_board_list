@@ -28,4 +28,8 @@ public interface BoardMapper {
 
 	public void modify(BoardVO boardVO);
 
+	public void write(BoardVO boardVO);
+
+	public void hit(BoardVO boardVO);
+
 }

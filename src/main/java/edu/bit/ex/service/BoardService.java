@@ -22,4 +22,6 @@ public interface BoardService {
 	public void delete(BoardVO boardVO);
 
 	public void modify(BoardVO boardVO);
+
+	public void write(BoardVO boardVO);
 }

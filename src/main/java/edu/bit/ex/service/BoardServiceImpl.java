@@ -39,6 +39,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardVO getContent(BoardVO boardVO) {
 		log.info("s.getContent()");
+		mapper.hit(boardVO);
 		return mapper.contentView(boardVO);
 	}
 
@@ -67,6 +68,14 @@ public class BoardServiceImpl implements BoardService {
 		log.info("s.modify()");
 		mapper.modify(boardVO);
 
+	}
+
+	@Override
+	public void write(BoardVO boardVO) {
+		log.info("s.write()");
+		mapper.write(boardVO);
+		
+		
 	}
 
 }
