@@ -55,4 +55,20 @@ public class BController {
 		return "redirect:board";
 	}
 
+	@GetMapping("/delete")
+	public String delete(BoardVO boardVO) {
+		log.info("c.delete()");
+		service.delete(boardVO);
+		return "redirect:board";
+
+	}
+
+	@PostMapping("/modify")
+	public String modify(BoardVO boardVO) {
+		log.info("c.modify()");
+		service.modify(boardVO);
+		return "redirect:board";
+
+	}
+
 }

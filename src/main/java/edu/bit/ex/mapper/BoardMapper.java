@@ -24,4 +24,8 @@ public interface BoardMapper {
 
 	public void replyShape(BoardVO boardVO);
 
+	public void delete(BoardVO boardVO);
+
+	public void modify(BoardVO boardVO);
+
 }

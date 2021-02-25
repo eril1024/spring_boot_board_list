@@ -53,6 +53,19 @@ public class BoardServiceImpl implements BoardService {
 		log.info("s.reply()");
 		mapper.replyShape(boardVO);
 		mapper.reply(boardVO);
+	}
+
+	@Override
+	public void delete(BoardVO boardVO) {
+		log.info("s.delete()");
+		mapper.delete(boardVO);
+
+	}
+
+	@Override
+	public void modify(BoardVO boardVO) {
+		log.info("s.modify()");
+		mapper.modify(boardVO);
 
 	}
 

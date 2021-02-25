@@ -18,4 +18,8 @@ public interface BoardService {
 	public BoardVO getReplyView(BoardVO boardVO);
 
 	public void reply(BoardVO boardVO);
+
+	public void delete(BoardVO boardVO);
+
+	public void modify(BoardVO boardVO);
 }
