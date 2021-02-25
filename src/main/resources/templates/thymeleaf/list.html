@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3"></div>
+			<div class="col-sm-6">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>번호</th>
+							<th>이름</th>
+							<th>제목</th>
+							<th>날짜</th>
+							<th>히트</th>
+						</tr>
+					</thead>
+					<tr th:each="dto : ${list}">
+						<td><span th:text="${dto.bid}"></span></td>
+						<td><span th:text="${dto.bname}"></span></td>
+						<td><span th:each="i : ${#numbers.sequence(0,dto.bindent)}"
+							th:if="${i>0}">-</span> <a href="content_view?bid=${dto.bid}"><span
+								th:text="${dto.btitle}"></span></a></td>
+						<td><span th:text="${dto.bdate}"></span></td>
+						<td><span th:text="${dto.bhit}"></span></td>
+					</tr>
+
+
+
+				</table>
+				
+				<div class="row">
+					<div class="col-sm-2"><a href="write_view">글작성</a></div>
+					<div class="col-sm-8">
+						<ul class="pagination">
+							<li class="page-item" th:if="${pageMaker.prev}"><a
+								class="page-link"
+								th:href="@{${pageMaker.makeQuery(pageMaker.startPage - 1) }}">이전</a></li>
+
+							<li class="page-item"
+								th:each="i : ${#numbers.sequence(pageMaker.startPage, pageMaker.endPage)}"
+								th:if="${i>0}"><a class="page-link"
+								th:href="@{${pageMaker.makeQuery(i)}}"><span th:text="${i}"></span></a></li>
+
+							<li class="page-item"
+								th:if="${pageMaker.next && pageMaker.endPage > 0}"><a
+								class="page-link"
+								th:href="@{${pageMaker.makeQuery(pageMaker.endPage +1) }}">다음</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-2"></div>
+
+				</div>
+				<div class="col-sm-3"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
