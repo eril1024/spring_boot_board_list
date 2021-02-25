@@ -3,45 +3,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form th:action="@{modify}" method="post" >
-		<table width="500" cellpadding="0" cellspacing="0" border="1">
+	<form th:action="@{modify}" method="post">
+	<input type="hidden" name="bid" th:value="${content_view.bid}">
+		<div>
+			<h3>번호 : <span th:text="${content_view.bid}"></span><br>히트 : <span
+				th:text="${content_view.bhit}"></span></h3>
 
-			<input type="hidden" name="bid" th:value="${content_view.bid}">
-			<tr>
-				<td>번호</td>
-				<td th:text="${content_view.bid}">
-				<td>
-			</tr>
-			<tr>
-				<td>히트</td>
-				<td th:text="${content_view.bhit}"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="bname"
-					th:value="${content_view.bname}"></td>
-			</tr>
-			<tr>
-				<td>제목</td>
-				<td><input type="text" name="btitle"
-					th:value="${content_view.btitle}"></td>
-			</tr>
-			<tr>
-				<td>내용</td>
-				<td><textarea rows="10" name="bcontent"
-						th:text="${content_view.bcontent}"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="수정">
-					&nbsp;&nbsp; <a th:href="@{board}">목록보기</a> &nbsp;&nbsp; <a
-					th:href="@{delete(bid=${content_view.bid})}">삭제</a> &nbsp;&nbsp; <a
-					th:href="@{reply_view(bid=${content_view.bid})}">답변</a></td>
-			</tr>
+			<div class="card" style="width: 400px">
 
-
-		</table>
+				<div class="card-body">
+					<p class="card-title">
+						제목 : <input type="text" name="btitle" th:value="${content_view.btitle}">
+					</p>
+					<p>
+						이름 : <input type="text" name="bname" th:value="${content_view.bname}">
+					</p>
+					<span>내용 : </span><br><textarea rows="10" cols="40" name="bcontent"
+						th:text="${content_view.bcontent}"></textarea>
+					<input type="submit" value="수정"
+						class="btn btn-primary stretched-link"> &nbsp;&nbsp; <a
+						th:href="@{board}">목록보기</a> &nbsp;&nbsp; <a
+						th:href="@{delete(bid=${content_view.bid})}">삭제</a> &nbsp;&nbsp; <a
+						th:href="@{reply_view(bid=${content_view.bid})}">답변</a>
+				</div>
+			</div>
+		</div>
 	</form>
 </body>
 </html>

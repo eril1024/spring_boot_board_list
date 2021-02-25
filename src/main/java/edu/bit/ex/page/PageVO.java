@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 public class PageVO {
-	private int displayPageCount = 5;
+	private int displayPageCount = 10;
 	private int startPage;
 	private int endPage;
 	private boolean prev, next;
