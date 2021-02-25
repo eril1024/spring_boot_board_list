@@ -18,4 +18,10 @@ public interface BoardMapper {
 
 	public BoardVO contentView(BoardVO boardVO);
 
+	public BoardVO replyView(BoardVO boardVO);
+
+	public void reply(BoardVO boardVO);
+
+	public void replyShape(BoardVO boardVO);
+
 }

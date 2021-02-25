@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{reply}" method="post" th:object="${boardVO}">
+		<table width="500" cellpadding="0" cellspacing="0" border="1">
+
+			<input type="hidden" name="bid" th:value="${reply_view.bid}">
+			<input type="hidden" name="bgroup" th:value="${reply_view.bgroup}">
+			<input type="hidden" name="bstep" th:value="${reply_view.bstep}">
+			<input type="hidden" name="bindent" th:value="${reply_view.bindent}">
+			<tr>
+				<td>번호</td>
+				<td th:text="${reply_view.bid}">
+				<td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="bname"
+					th:value="${reply_view.bname}"></td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td><input type="text" name="btitle"
+					th:value="${reply_view.btitle}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea rows="10" name="bcontent"
+						th:text="${reply_view.bcontent}"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="답변"> <a
+					th:href="@{board}">목록</a></td>
+			</tr>
+
+
+		</table>
+	</form>
+</body>
+</html>

@@ -14,4 +14,8 @@ public interface BoardService {
 	public int getTotal(Criteria cri);
 
 	public BoardVO getContent(BoardVO boardVO);
+
+	public BoardVO getReplyView(BoardVO boardVO);
+
+	public void reply(BoardVO boardVO);
 }

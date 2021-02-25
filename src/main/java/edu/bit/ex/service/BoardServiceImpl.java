@@ -7,9 +7,8 @@ import org.springframework.stereotype.Service;
 import edu.bit.ex.mapper.BoardMapper;
 import edu.bit.ex.page.Criteria;
 import edu.bit.ex.vo.BoardVO;
-import jdk.internal.org.jline.utils.Log;
+
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -41,6 +40,20 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO getContent(BoardVO boardVO) {
 		log.info("s.getContent()");
 		return mapper.contentView(boardVO);
+	}
+
+	@Override
+	public BoardVO getReplyView(BoardVO boardVO) {
+		log.info("s.getReplyView()");
+		return mapper.replyView(boardVO);
+	}
+
+	@Override
+	public void reply(BoardVO boardVO) {
+		log.info("s.reply()");
+		mapper.replyShape(boardVO);
+		mapper.reply(boardVO);
+
 	}
 
 }

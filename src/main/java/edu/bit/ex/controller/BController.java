@@ -3,6 +3,7 @@ package edu.bit.ex.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.bit.ex.page.Criteria;
@@ -21,8 +22,8 @@ public class BController {
 	BoardService service;
 
 	@GetMapping("/board")
-	public String list(Model model, Criteria cri) {
-		log.info("listPage()");
+	public String listPage(Model model, Criteria cri) {
+		log.info("c.listPage()");
 		model.addAttribute("list", service.list(cri));
 
 		int total = service.getTotal(cri);
@@ -34,9 +35,24 @@ public class BController {
 
 	@GetMapping("/content_view")
 	public String content_view(Model model, BoardVO boardVO) {
-		log.info("content_view()");
+		log.info("c.content_view()");
 		model.addAttribute("content_view", service.getContent(boardVO));
 		return "thymeleaf/content_view";
+	}
+
+	@GetMapping("/reply_view")
+	public String reply_view(Model model, BoardVO boardVO) {
+		log.info("c.reply_view()");
+		model.addAttribute("reply_view", service.getReplyView(boardVO));
+		return "thymeleaf/reply_view";
+
+	}
+
+	@PostMapping("/reply")
+	public String reply(BoardVO boardVO) {
+		log.info("c.reply()");
+		service.reply(boardVO);
+		return "redirect:board";
 	}
 
 }
